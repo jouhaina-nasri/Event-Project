@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.entity.Evenement;
+import com.example.entity.Event;
 import com.example.repository.EventRepository;
 
 import io.swagger.annotations.Api;
@@ -33,7 +33,7 @@ public class EventController{
 	      @ApiResponse(code = 404, message = "not found!!!") })
 	 
 	@PostMapping(value = "/save")
-	public void save(@RequestBody Evenement client){
+	public void save(@RequestBody Event client){
 		eventRepository.save(client);
 	}
 	
@@ -45,7 +45,7 @@ public class EventController{
 	      @ApiResponse(code = 404, message = "not found!!!") })
 	 
 	@GetMapping(value = "/findAllEvents")
-    public List<Evenement> findAll(){
+    public List<Event> findAll(){
 		return eventRepository.findAll();
 	}
 	

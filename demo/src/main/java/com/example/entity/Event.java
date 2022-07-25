@@ -14,91 +14,91 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 //Table name 
-@Measurement(name = "evenement")
-public class Evenement {
+@Measurement(name = "event")
+public class Event {
 	
 	@Column(tag = true, name = "id")
 	private String id;
 
 	@Column(name = "event_timestamp")
-	private String event_timestamp;
+	private String eventTimestamp;
 	
 	@Column(name = "event_type")
-	private String event_type;
+	private String eventType;
 	
 	@Column(name = "page_url")
-	private String page_url;
+	private String pageUrl;
 	
 	@Column(name = "page_url_path")
-	private String page_url_path;
+	private String pageUrlPath;
 	
 	@Column(name = "referer_url")
-	private String referer_url;
+	private String refererUrl;
 	
 	@Column(name = "referer_url_scheme")
-	private String referer_url_scheme;
+	private String refererUrlScheme;
 	
 	@Column(name = "referer_url_port")
-	private String referer_url_port;
+	private String refererUrlPort;
 	
 	@Column(name = "referer_medium")
-	private String referer_medium;
+	private String refererMedium;
 	
 	@Column(name = "utm_medium")
-	private String utm_medium;
+	private String utmMedium;
 	
 	@Column(name = "utm_source")
-	private String utm_source;
+	private String utmSource;
 	
 	@Column(name = "utm_content")
-	private String utm_content;
+	private String utmContent;
 	
 	@Column(name = "utm_campaign")
-	private String utm_campaign;
+	private String utmCampaign;
 	
 	@Column(name = "click_id")
-	private String click_id;
+	private String clickId;
 	
 	@Column(name = "geo_latitude")
-	private String geo_latitude;
+	private String geoLatitude;
 	
 	@Column(name = "geo_longitude")
-	private String geo_longitude;
+	private String geoLongitude;
 	
 	@Column(name = "geo_country")
-	private String geo_country;
+	private String geoCountry;
 	
 	@Column(name = "geo_timezone")
-	private String geo_timezone;
+	private String geoTimezone;
 	
 	@Column(name = "geo_region_name")
-	private String geo_region_name;
+	private String geoRegionName;
 	
 	@Column(name = "ip_address")
-	private String ip_address;
+	private String ipAddress;
 	
 	@Column(name = "browser_name")
-	private String browser_name;
+	private String browserName;
 	 
 	@Column(name = "browser_user_agent")
-	private String browser_user_agent;
+	private String browserUserAgent;
 	
 	@Column(name = "browser_language")
-	private String browser_language;
+	private String browserLanguage;
 	
 	@Column(name = "os")
 	private String os;
 	
 	@Column(name = "os_name")
-	private String os_name;
+	private String osName;
 	
 	@Column(name = "os_timezone")
-	private String os_timezone;
+	private String osTimezone;
 	
 	@Column(name = "device_type")
-	private String device_type;
+	private String deviceType;
 	
 	@Column(name = "device_is_mobile")
-	private Boolean device_is_mobile;
+	private Boolean deviceIsMobile;
 	
 }

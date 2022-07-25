@@ -11,7 +11,7 @@ import org.influxdb.dto.QueryResult;
 import org.influxdb.impl.InfluxDBResultMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.example.entity.Evenement;
+import com.example.entity.Event;
 
 
 @Component
@@ -21,66 +21,66 @@ public class EventRepositoryImpl implements EventRepository{
 	    private InfluxDB influxDB;
 		
 		@Override
-		public void save(Evenement event) 
+		public void save(Event event) 
 		{
 			Point point = Point
-                    .measurement("evenement")
+                    .measurement("event")
                     .time(System.currentTimeMillis(), TimeUnit.MICROSECONDS)
                     .tag("ID",event.getId())
-                    .addField("event_timestamp", event.getEvent_timestamp())
-                    .addField("event_type", event.getEvent_type())
-                    .addField("page_url", event.getPage_url())
-                    .addField("page_url_path", event.getPage_url_path())
-                    .addField("referer_url", event.getReferer_url())
-                    .addField("referer_url_scheme", event.getReferer_url_scheme())
-                    .addField("referer_url_port", event.getReferer_url_port())
-                    .addField("referer_medium", event.getReferer_medium())
-                    .addField("utm_medium", event.getUtm_medium())
-                    .addField("utm_source", event.getUtm_source())
-                    .addField("utm_content", event.getUtm_content())
-                    .addField("utm_campaign", event.getUtm_campaign())
-                    .addField("click_id", event.getClick_id())
-                    .addField("geo_latitude", event.getGeo_latitude())
-                    .addField("geo_longitude", event.getGeo_longitude())
-                    .addField("geo_country", event.getGeo_country())
-                    .addField("geo_timezone", event.getGeo_timezone())
-                    .addField("geo_region_name", event.getGeo_region_name())
-                    .addField("ip_address", event.getIp_address())
-                    .addField("browser_name", event.getBrowser_name())
-                    .addField("browser_user_agent", event.getBrowser_user_agent())
-                    .addField("browser_language", event.getBrowser_language())
+                    .addField("event_timestamp", event.getEventTimestamp())
+                    .addField("event_type", event.getEventType())
+                    .addField("page_url", event.getPageUrl())
+                    .addField("page_url_path", event.getPageUrlPath())
+                    .addField("referer_url", event.getRefererUrl())
+                    .addField("referer_url_scheme", event.getRefererUrlScheme())
+                    .addField("referer_url_port", event.getRefererUrlPort())
+                    .addField("referer_medium", event.getRefererMedium())
+                    .addField("utm_medium", event.getUtmMedium())
+                    .addField("utm_source", event.getUtmSource())
+                    .addField("utm_content", event.getUtmContent())
+                    .addField("utm_campaign", event.getUtmCampaign())
+                    .addField("click_id", event.getClickId())
+                    .addField("geo_latitude", event.getGeoLatitude())
+                    .addField("geo_longitude", event.getGeoLongitude())
+                    .addField("geo_country", event.getGeoCountry())
+                    .addField("geo_timezone", event.getGeoTimezone())
+                    .addField("geo_region_name", event.getGeoRegionName())
+                    .addField("ip_address", event.getIpAddress())
+                    .addField("browser_name", event.getBrowserName())
+                    .addField("browser_user_agent", event.getBrowserUserAgent())
+                    .addField("browser_language", event.getBrowserLanguage())
                     .addField("os", event.getOs())
-                    .addField("os_name", event.getOs_name())
-                    .addField("os_timezone", event.getOs_timezone())
-                    .addField("device_type", event.getDevice_type())
-                    .addField("device_is_mobile", event.getDevice_is_mobile())
+                    .addField("os_name", event.getOsName())
+                    .addField("os_timezone", event.getOsTimezone())
+                    .addField("device_type", event.getDeviceType())
+                    .addField("device_is_mobile", event.getDeviceIsMobile())
                     .build();
 			influxDB.write(point);
 		}
 
 		@Override
-		public List<Evenement> findAll() {
-			List<Evenement> result = new ArrayList<Evenement>();
-	        Query query = new Query("SELECT * FROM evenement");
+		public List<Event> findAll() {
+			List<Event> result = new ArrayList<Event>();
+	        Query query = new Query("SELECT * FROM event");
 	        QueryResult queryResult = influxDB.query(query);
 	        InfluxDBResultMapper resultMapper = new InfluxDBResultMapper();
-	        result = resultMapper.toPOJO(queryResult, Evenement.class);
+	        result = resultMapper.toPOJO(queryResult, Event.class);
 			return result;
 		}
 
 		@Override
 		public void deleteAll() {
-			 Query query = new Query("drop measurement evenement");
+			 Query query = new Query("drop measurement event");
 		     QueryResult queryResult = influxDB.query(query);
 		}
 
 		@Override
 		public boolean findbyID(String id_event) {
-			List<Evenement> result = new ArrayList<Evenement>();
-	        Query query = new Query("SELECT * FROM evenement where ID /" + id_event +"/");
+			List<Event> result = new ArrayList<Event>();
+	        Query query = new Query("SELECT * FROM event where ID /" + id_event +"/");
 	        QueryResult queryResult = influxDB.query(query);
 	        InfluxDBResultMapper resultMapper = new InfluxDBResultMapper();
-	        result = resultMapper.toPOJO(queryResult, Evenement.class);
+	        result = resultMapper.toPOJO(queryResult, Event.class);
 			if(result==null)
 				return false;
 			else 
@@ -89,7 +89,7 @@ public class EventRepositoryImpl implements EventRepository{
 
 		@Override
 		public void deletebyID(String id_event) {
-			Query query = new Query("drop measurement evenement where ID /" + id_event +"/");
+			Query query = new Query("drop measurement event where ID /" + id_event +"/");
 		    QueryResult queryResult = influxDB.query(query);
 		}
 
