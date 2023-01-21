@@ -1,6 +1,7 @@
-# EventProject
+# Event-Project
 
 ---
 
+# Frameworks
 * Spring boot
 * Influxdb
